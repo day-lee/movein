@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library</title>
+</head>
+<body>
+<h1>My Library</h1>
+<img src="static/book.jpg">
+    {% if all_books == []: %}
+        <p>Library is empty.</p>
+    {% endif %}
+
+    {% for book in all_books: %}   <!-- all books is a list can tap into with .title / book is an obj -->
+    <ul>
+    <li>
+        <a href="{{ url_for('delete', id=book.id)}}">Delete</a>
+        {{ book.title }} - {{ book.author}} - {{ book.rating}}/10
+        <a href="{{ url_for('edit', id=book.id) }}">Edit Rating</a> </li>
+
+<!--    day 58 url building...    -->
+
+    </ul>
+
+    {% endfor %}
+
+<a href="/add">Add New Book</a>
+</body>
+</html>
